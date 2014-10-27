@@ -8,8 +8,10 @@ const int quantity = 100;
 //const int range = 10;
 const int myMin = 20;
 const int myMax = 50;
+const int tableSize = 4;
 
 int tab[quantity];
+int tab2[tableSize][tableSize];
 
 void menu();
 void fill123();
@@ -17,6 +19,8 @@ void showTab();
 void fillrand();
 void swapMin();
 void sortCho();
+void mulTable();
+void mulSeeSaw();
 
 int main()
 {
@@ -29,11 +33,15 @@ void menu()
 {
 	system("CLS");
 	cout << "Co robic, jak zyc?" << endl
+		<< "TABLICA JEDNOWYMIAROWA:" << endl
 		<< "1. Wypelnianie 1 2 3" << endl
 		<< "2. Wyswietlnanie tablicy" << endl
 		<< "3. Wypelnianie tablicy losowymi" << endl
 		<< "4. Zamien element minimalny z elementem pierwszym" << endl
 		<< "5. Sortowanie przez wybieranie" << endl
+		<< "TABLICA DWUWYMIAROWA:" << endl
+		<< "6. Tabliczka mnozenia" << endl
+		<< "7. Tabliczka mnozenia tam i nazad" << endl
 		<< "666. Wyjscie z programu" << endl;
 	int wybor = 0;
 	cin >> wybor;
@@ -62,6 +70,16 @@ void menu()
 	case 5:
 	{
 			  sortCho();
+			  menu();
+	}
+	case 6:
+	{
+			  mulTable();
+			  menu();
+	}
+	case 7:
+	{
+			  mulSeeSaw();
 			  menu();
 	}
 	case 666:
@@ -122,6 +140,49 @@ void sortCho()
 				nMin = j;
 		}
 		swap(tab[i], tab[nMin]);
+	}
+	system("PAUSE");
+}
+
+void mulTable()
+{
+	for (int i = 0; i < tableSize; i++)
+	{
+		for (int j = 0; j < tableSize; j++)
+			tab2[i][j] = (i+1)*(j+1);
+	}
+	for (int i = 0; i < tableSize; i++)
+	{
+		for (int j = 0; j < tableSize; j++)
+		{
+			cout.width(4);
+			cout << right << tab2[i][j] << " ";
+		}
+		cout << endl;
+	}
+	system("PAUSE");
+}
+
+void mulSeeSaw()
+{
+	for (int i = 0; i < tableSize; i++)
+	{
+		for (int j = 0; j < tableSize; j++)
+		{
+			if (i==0 && i%2==0)
+				tab2[i][j] = (i + 1)*(j + 1);
+			else
+				tab2[i][tableSize-j] = (i + 1)*(j + 1);
+		}
+	}
+	for (int i = 0; i < tableSize; i++)
+	{
+		for (int j = 0; j < tableSize; j++)
+		{
+			cout.width(4);
+			cout << right << tab2[i][j] << " ";
+		}
+		cout << endl;
 	}
 	system("PAUSE");
 }
