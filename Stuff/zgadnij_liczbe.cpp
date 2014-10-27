@@ -6,8 +6,8 @@ using namespace std;
 int main()
 {
 	srand(time(NULL));
-	int liczba=rand()%100+1, zgadywana, i;
-	for (i = 0; i < 10; i++)
+	int liczba=rand()%100+1, zgadywana;
+	for (int i = 0; i < 10; i++)
 	{
 		system("CLS");
 		cout << "Podejscie: " << i+1 << endl;
@@ -30,7 +30,5 @@ int main()
 		}
 		system("PAUSE");	
 	}
-	if (i==10)
-		
 	return 0;	
 }
